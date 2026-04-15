@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio professionnel
 
-## Getting Started
+Base technique d'un portfolio professionnel construit avec Next.js, TypeScript,
+Tailwind CSS et pense pour un deploiement sur Vercel.
 
-First, run the development server:
+## Prerequis
+
+- Node.js `20.19.0` ou plus recent.
+- npm.
+- Un compte GitHub.
+- Un compte Vercel.
+
+## Installation locale
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Le site sera disponible sur `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Qualite
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run typecheck
+npm run check
+npm run build
+```
 
-## Learn More
+## Configuration
 
-To learn more about Next.js, take a look at the following resources:
+Copier `.env.example` vers `.env.local`, puis ajuster l'URL lorsque le domaine
+final sera connu :
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+NEXT_PUBLIC_SITE_URL=https://votre-domaine.com
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Sur Vercel, ajouter la meme variable dans les variables d'environnement du
+projet pour que les metadonnees, `robots.txt` et `sitemap.xml` utilisent le bon
+domaine.
 
-## Deploy on Vercel
+## Publication sur GitHub
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+git remote add origin https://github.com/<utilisateur>/<repo>.git
+git branch -M main
+git push -u origin main
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deploiement Vercel
+
+1. Importer le repo GitHub dans Vercel.
+2. Framework preset : Next.js.
+3. Build command : `npm run build`.
+4. Install command : `npm ci`.
+5. Ajouter `NEXT_PUBLIC_SITE_URL`.
+6. Dans Vercel, ajouter le domaine achete dans `Project Settings > Domains`.
+7. Configurer les DNS chez le registrar selon les valeurs donnees par Vercel.
