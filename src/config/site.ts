@@ -1,7 +1,7 @@
 export const siteConfig = {
-  name: "Portfolio professionnel",
-  author: "Arthur",
+  name: "Arthur Desfrancais",
+  author: "Arthur Desfrancais",
   description:
-    "Portfolio professionnel presentant une selection de projets, competences et experiences.",
+    "Portfolio presenting finance-oriented projects, quantitative skills, education, and experience.",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
 };
