@@ -24,6 +24,15 @@ export type ProjectEntry = {
   goal: LocalizedText;
   summary: LocalizedText;
   tags: string[];
+  teaserImage?: {
+    src: string;
+    alt: LocalizedText;
+    fit?: "cover" | "contain";
+  };
+  gallery?: Array<{
+    src: string;
+    alt: LocalizedText;
+  }>;
   detailSections: ProjectDetailSection[];
 };
 
@@ -57,6 +66,29 @@ export const projects: ProjectEntry[] = [
       "Multi-Classifier",
       "RandomForest",
       "Time Series",
+    ],
+    teaserImage: {
+      src: "/projects/heat-classifier/teaser.png",
+      alt: {
+        en: "Heat classifier prediction chart preview",
+        fr: "Apercu du graphique de prediction du heat classifier",
+      },
+    },
+    gallery: [
+      {
+        src: "/projects/heat-classifier/teaser.png",
+        alt: {
+          en: "Bitcoin price and model prediction chart",
+          fr: "Graphique du prix du Bitcoin et des predictions du modele",
+        },
+      },
+      {
+        src: "/projects/heat-classifier/btc-price.png",
+        alt: {
+          en: "Bitcoin price, moving averages, RSI and price variation chart",
+          fr: "Graphique du prix du Bitcoin, moyennes mobiles, RSI et variation du prix",
+        },
+      },
     ],
     detailSections: [
       {
@@ -140,6 +172,29 @@ export const projects: ProjectEntry[] = [
       "Monte Carlo Simulation",
       "Market Indicators",
     ],
+    teaserImage: {
+      src: "/projects/defi-liquidation/teaser.png",
+      alt: {
+        en: "Simulated health factor trajectories chart",
+        fr: "Graphique des trajectoires simulees du health factor",
+      },
+    },
+    gallery: [
+      {
+        src: "/projects/defi-liquidation/teaser.png",
+        alt: {
+          en: "Simulated health factor trajectories and liquidation barrier",
+          fr: "Trajectoires simulees du health factor et barriere de liquidation",
+        },
+      },
+      {
+        src: "/projects/defi-liquidation/console.png",
+        alt: {
+          en: "Simulation console output with liquidation metrics",
+          fr: "Sortie console de la simulation avec les metriques de liquidation",
+        },
+      },
+    ],
     detailSections: [
       {
         key: "context",
@@ -221,6 +276,29 @@ export const projects: ProjectEntry[] = [
       "Time Series",
       "ARIMA",
       "FineTuning / GRU",
+    ],
+    teaserImage: {
+      src: "/projects/electricity-optimizer/teaser.png",
+      alt: {
+        en: "Electricity price dataset chart preview",
+        fr: "Apercu du jeu de donnees des prix de l'electricite",
+      },
+    },
+    gallery: [
+      {
+        src: "/projects/electricity-optimizer/teaser.png",
+        alt: {
+          en: "Electricity price dataset split between training, test and full dataset",
+          fr: "Jeu de donnees des prix de l'electricite avec separation entre train, test et historique complet",
+        },
+      },
+      {
+        src: "/projects/electricity-optimizer/metrics.png",
+        alt: {
+          en: "Model comparison table across SARIMA, Chronos and GRU",
+          fr: "Table de comparaison des modeles SARIMA, Chronos et GRU",
+        },
+      },
     ],
     detailSections: [
       {
@@ -308,6 +386,36 @@ export const projects: ProjectEntry[] = [
       "Flask",
       "REST API",
     ],
+    teaserImage: {
+      src: "/projects/rag-chatbot/teaser.png",
+      alt: {
+        en: "Admissions chatbot interface preview",
+        fr: "Apercu de l'interface du chatbot d'admission",
+      },
+    },
+    gallery: [
+      {
+        src: "/projects/rag-chatbot/teaser.png",
+        alt: {
+          en: "Admissions chatbot user interface",
+          fr: "Interface utilisateur du chatbot d'admission",
+        },
+      },
+      {
+        src: "/projects/rag-chatbot/langsmith-table.png",
+        alt: {
+          en: "LangSmith experiment output comparison table",
+          fr: "Table de comparaison des sorties d'experience LangSmith",
+        },
+      },
+      {
+        src: "/projects/rag-chatbot/langsmith-experiments.png",
+        alt: {
+          en: "LangSmith experiments evaluation dashboard",
+          fr: "Tableau d'evaluation des experiences LangSmith",
+        },
+      },
+    ],
     detailSections: [
       {
         key: "context",
@@ -393,6 +501,29 @@ export const projects: ProjectEntry[] = [
       "MetaMask",
       "Smart Contract",
       "Flask",
+    ],
+    teaserImage: {
+      src: "/projects/smart-contract/teaser.png",
+      alt: {
+        en: "Smart contract app interface preview",
+        fr: "Apercu de l'interface de l'application smart contract",
+      },
+    },
+    gallery: [
+      {
+        src: "/projects/smart-contract/teaser.png",
+        alt: {
+          en: "Smart contract application dashboard and transaction interface",
+          fr: "Tableau de bord de l'application smart contract et interface de transaction",
+        },
+      },
+      {
+        src: "/projects/smart-contract/wallet.png",
+        alt: {
+          en: "MetaMask wallet connection flow",
+          fr: "Flux de connexion du wallet MetaMask",
+        },
+      },
     ],
     detailSections: [
       {

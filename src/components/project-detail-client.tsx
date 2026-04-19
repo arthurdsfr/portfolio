@@ -1,6 +1,7 @@
 "use client";
 
 import { Fragment } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { LanguageToggle } from "@/components/language-toggle";
 import {
@@ -35,9 +36,11 @@ function renderParagraphs(value: string) {
 const pageLabels = {
   en: {
     back: "Back to projects",
+    gallery: "Project visuals",
   },
   fr: {
     back: "Retour aux projets",
+    gallery: "Visuels du projet",
   },
 } as const;
 
@@ -107,6 +110,40 @@ export function ProjectDetailClient({ project }: { project: ProjectEntry }) {
             ))}
           </div>
         </section>
+
+        {project.gallery && project.gallery.length > 0 ? (
+          <section className="mt-10 rounded-lg border border-[#d7dde5] bg-[#fbfcfd] p-8 shadow-[0_16px_50px_rgba(15,23,42,0.05)]">
+            <div className="flex items-center justify-between gap-4">
+              <h2
+                className="text-2xl leading-tight text-[#171c24]"
+                style={{
+                  fontFamily:
+                    '"Iowan Old Style", "Baskerville Old Face", Baskerville, "Times New Roman", serif',
+                  fontWeight: 600,
+                }}
+              >
+                {pageLabels[locale].gallery}
+              </h2>
+            </div>
+            <div className="mt-8 grid gap-6 lg:grid-cols-2">
+              {project.gallery.map((image) => (
+                <figure
+                  key={image.src}
+                  className="overflow-hidden rounded-lg border border-[#d7dde5] bg-white"
+                >
+                  <div className="relative aspect-[4/3] w-full bg-[#f8fafc]">
+                    <Image
+                      src={image.src}
+                      alt={image.alt[locale]}
+                      fill
+                      className="object-contain"
+                    />
+                  </div>
+                </figure>
+              ))}
+            </div>
+          </section>
+        ) : null}
       </div>
     </main>
   );

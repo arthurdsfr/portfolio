@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { LanguageToggle } from "@/components/language-toggle";
@@ -28,13 +29,6 @@ type EducationEntry = {
   period: string;
   ranking: Localized<string>;
   location: Localized<string>;
-};
-
-type ExperienceEntry = {
-  company: string;
-  period: Localized<string>;
-  location: Localized<string>;
-  role: Localized<string>;
 };
 
 type Reference = {
@@ -168,8 +162,8 @@ const skillGroups: SkillGroup[] = [
       fr: ["Français (natif)", "Anglais (C1)"],
     },
     note: {
-      en: "English certification: TOEIC 920/990",
-      fr: "Certification d'anglais : TOEIC 920/990",
+      en: "English certification: TOEIC 930/990",
+      fr: "Certification d'anglais : TOEIC 930/990",
     },
   },
   {
@@ -236,9 +230,34 @@ const educationEntries: EducationEntry[] = [
   },
 ];
 
-const experienceEntries: ExperienceEntry[] = [
+const experienceEntries = [
   {
+    slug: "thales",
+    company: "Thales",
+    logo: {
+      src: "/logos/thales.png",
+      alt: "Thales logo",
+    },
+    period: {
+      en: "March 2026 - August 2026",
+      fr: "Mars 2026 - Août 2026",
+    },
+    location: {
+      en: "Paris, France",
+      fr: "Paris, France",
+    },
+    role: {
+      en: "AI Algorithm Engineering Intern",
+      fr: "Stagiaire ingénieur en algorithmes d'IA",
+    },
+  },
+  {
+    slug: "zettabyte",
     company: "ZettaByte",
+    logo: {
+      src: "/logos/zettabyte.jpg",
+      alt: "ZettaByte logo",
+    },
     period: {
       en: "May 2025 - August 2025",
       fr: "Mai 2025 - Août 2025",
@@ -253,7 +272,12 @@ const experienceEntries: ExperienceEntry[] = [
     },
   },
   {
+    slug: "sanofi",
     company: "Sanofi",
+    logo: {
+      src: "/logos/sanofi.png",
+      alt: "Sanofi logo",
+    },
     period: {
       en: "Nov. 2024 - Dec. 2024",
       fr: "Nov. 2024 - Déc. 2024",
@@ -442,7 +466,7 @@ const uiLabels = {
     otherProjectsTitle: "Other projects",
     contactTitle: "Let's get in touch",
     profileCardTitle: "Profile",
-    profileRole: "General Engineering Student",
+    profileRole: "General Engineer",
     keywords: ["AI & Data Science", "Finance", "Quantitative profile"],
     email: "Email",
     linkedin: "LinkedIn",
@@ -697,19 +721,31 @@ function ExperiencePanel({ locale }: { locale: Locale }) {
       </div>
       <div>
         {experienceEntries.map((entry) => (
-          <article
+          <Link
             key={`${entry.company}-${entry.period.en}`}
-            className="grid gap-4 border-b border-[#e6ebf1] px-6 py-6 last:border-b-0 lg:grid-cols-[1.15fr_1fr_1fr_1fr]"
+            href={`/experiences/${entry.slug}`}
+            className="grid gap-4 border-b border-[#e6ebf1] px-6 py-6 transition-colors hover:bg-[#f7f9fb] last:border-b-0 lg:grid-cols-[1.15fr_1fr_1fr_1fr]"
           >
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.12em] text-[#7b8490] lg:hidden">
                 {headers[0]}
               </p>
-              <p className="mt-1 text-xl font-semibold text-[#171c24]">{entry.company}</p>
+              <div className="mt-1 flex items-center gap-4">
+                <div className="flex h-11 w-16 shrink-0 items-center justify-center overflow-hidden rounded-md border border-[#e6ebf1] bg-white px-2">
+                  <Image
+                    src={entry.logo.src}
+                    alt={entry.logo.alt}
+                    width={64}
+                    height={32}
+                    className="max-h-7 w-auto object-contain"
+                  />
+                </div>
+                <p className="text-xl font-semibold text-[#171c24]">{entry.company}</p>
+              </div>
             </div>
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.12em] text-[#7b8490] lg:hidden">
-                Period
+                {headers[1]}
               </p>
               <p className="mt-1 text-base text-[#4f5a66]">
                 {entry.period[locale]}
@@ -729,7 +765,7 @@ function ExperiencePanel({ locale }: { locale: Locale }) {
               </p>
               <p className="mt-1 text-base text-[#4f5a66]">{entry.role[locale]}</p>
             </div>
-          </article>
+          </Link>
         ))}
       </div>
     </div>
@@ -746,8 +782,23 @@ function ProjectCard({
   return (
     <Link
       href={`/projects/${project.slug}`}
-      className="group flex h-full flex-col rounded-lg border border-[#d7dde5] bg-[#fbfcfd] p-7 shadow-[0_16px_50px_rgba(15,23,42,0.05)] transition-transform hover:-translate-y-1 hover:shadow-[0_18px_56px_rgba(15,23,42,0.08)]"
+      className="group flex h-full flex-col overflow-hidden rounded-lg border border-[#d7dde5] bg-[#fbfcfd] shadow-[0_16px_50px_rgba(15,23,42,0.05)] transition-transform hover:-translate-y-1 hover:shadow-[0_18px_56px_rgba(15,23,42,0.08)]"
     >
+      {project.teaserImage ? (
+        <div className="relative aspect-[16/10] w-full overflow-hidden border-b border-[#d7dde5] bg-white">
+          <Image
+            src={project.teaserImage.src}
+            alt={project.teaserImage.alt[locale]}
+            fill
+            className={`transition-transform duration-300 group-hover:scale-[1.02] ${
+              project.teaserImage.fit === "contain"
+                ? "object-contain p-3"
+                : "object-cover"
+            }`}
+          />
+        </div>
+      ) : null}
+      <div className="p-7">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.22em] text-[#6b7280]">
@@ -776,6 +827,7 @@ function ProjectCard({
       <span className="mt-6 font-mono text-xs uppercase tracking-[0.22em] text-[#64748b]">
         {uiLabels[locale].projectCta}
       </span>
+      </div>
     </Link>
   );
 }
@@ -1041,7 +1093,7 @@ export default function Home() {
             </div>
           </div>
 
-          <aside className="lg:pt-[4.4rem]">
+          <aside className="lg:pt-[6.5rem]">
             <div className="aspect-[4/5] rounded-lg border border-[#d7dde5] bg-[linear-gradient(180deg,#f8fafc_0%,#e8edf3_100%)] p-6 shadow-[0_16px_50px_rgba(15,23,42,0.05)]">
               <div className="flex h-full flex-col justify-between rounded-md border border-[#d9dfe7] bg-[#f8fafc] p-8">
                 <div>
