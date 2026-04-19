@@ -422,6 +422,16 @@ const otherInterests: OtherInterest[] = [
       fr: "Entraînement trois fois par semaine depuis deux ans.",
     },
   },
+  {
+    title: {
+      en: "Padel",
+      fr: "Padel",
+    },
+    description: {
+      en: "Regular tournament player, competing in P25 and P100 events, with tournament wins.",
+      fr: "Pratique reguliere en tournoi, avec participation a des P25 et P100 et des victoires en competition.",
+    },
+  },
 ];
 
 type ProfileTabKey = "skills" | "education" | "experience";
