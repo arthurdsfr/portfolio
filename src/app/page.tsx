@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -439,27 +439,27 @@ type ContactTabKey = "contact" | "references" | "other";
 
 const profileTabs = {
   en: [
-    { key: "skills" as const, label: "Skills" },
-    { key: "education" as const, label: "Education" },
-    { key: "experience" as const, label: "Experience" },
+    { key: "skills" as const, label: "Skills", accent: "●", accentClass: "text-[#64748b]" },
+    { key: "education" as const, label: "Education", accent: "●", accentClass: "text-[#8b6f47]" },
+    { key: "experience" as const, label: "Experience", accent: "●", accentClass: "text-[#5f7d6b]" },
   ],
   fr: [
-    { key: "skills" as const, label: "Compétences" },
-    { key: "education" as const, label: "Formation" },
-    { key: "experience" as const, label: "Expérience" },
+    { key: "skills" as const, label: "Compétences", accent: "●", accentClass: "text-[#64748b]" },
+    { key: "education" as const, label: "Formation", accent: "●", accentClass: "text-[#8b6f47]" },
+    { key: "experience" as const, label: "Expérience", accent: "●", accentClass: "text-[#5f7d6b]" },
   ],
 };
 
 const contactTabs = {
   en: [
-    { key: "contact" as const, label: "Contact" },
-    { key: "references" as const, label: "References" },
-    { key: "other" as const, label: "Other" },
+    { key: "contact" as const, label: "Contact", accent: "●", accentClass: "text-[#64748b]" },
+    { key: "references" as const, label: "References", accent: "●", accentClass: "text-[#8b6f47]" },
+    { key: "other" as const, label: "Other", accent: "●", accentClass: "text-[#5f7d6b]" },
   ],
   fr: [
-    { key: "contact" as const, label: "Contact" },
-    { key: "references" as const, label: "Références" },
-    { key: "other" as const, label: "Autres" },
+    { key: "contact" as const, label: "Contact", accent: "●", accentClass: "text-[#64748b]" },
+    { key: "references" as const, label: "Références", accent: "●", accentClass: "text-[#8b6f47]" },
+    { key: "other" as const, label: "Autres", accent: "●", accentClass: "text-[#5f7d6b]" },
   ],
 };
 
@@ -477,13 +477,13 @@ const uiLabels = {
     contactTitle: "Let's get in touch",
     profileCardTitle: "Profile",
     profileRole: "General Engineer",
-    keywords: ["AI & Data Science", "Finance", "Quantitative profile"],
+    keywords: ["AI & Data Science", "Market Finance", "Asset Management"],
     email: "Email",
     linkedin: "LinkedIn",
     phone: "Phone",
     disclaimerLabel: "Disclaimer:",
     disclaimer:
-      "Although some of these projects are intended for personal use or curiosity, I maintain critical distance from the results and remain aware of their limitations. They are primarily opportunities to explore, learn, and experiment rather than offer definitive conclusions.",
+      "These projects are presented as analytical and technical case studies. They reflect a structured approach to modeling, testing, and decision support, while acknowledging the practical limits of data, assumptions, and market conditions.",
     projectCta: "Open project note",
     referenceLabel: "Professional Reference",
     interestLabel: "Personal Interest",
@@ -501,13 +501,13 @@ const uiLabels = {
     contactTitle: "Restons en contact",
     profileCardTitle: "Profil",
     profileRole: "Ingénieur généraliste",
-    keywords: ["IA & Data Science", "Finance", "Profil quantitatif"],
+    keywords: ["IA & Data Science", "Finance de marché", "Asset Management"],
     email: "Email",
     linkedin: "LinkedIn",
     phone: "Téléphone",
     disclaimerLabel: "Avertissement :",
     disclaimer:
-      "Même si certains de ces projets ont été conçus par curiosité ou pour un usage personnel, je garde toujours une distance critique vis-à-vis des résultats et reste attentif à leurs limites. Ces projets sont avant tout des occasions d'explorer, d'apprendre et d'expérimenter, et non de fournir des conclusions définitives.",
+      "Ces projets sont présentés comme des études de cas analytiques et techniques. Ils illustrent une approche structurée de la modélisation, des tests et de l'aide à la décision, tout en gardant en tête les limites liées aux données, aux hypothèses et aux conditions de marché.",
     projectCta: "Ouvrir la fiche projet",
     referenceLabel: "Référence professionnelle",
     interestLabel: "Centre d'intérêt",
@@ -581,10 +581,14 @@ function SectionTitle({
 function TabButton({
   active,
   label,
+  accent,
+  accentClass,
   onClick,
 }: {
   active: boolean;
   label: string;
+  accent?: string;
+  accentClass?: string;
   onClick: () => void;
 }) {
   return (
@@ -597,7 +601,17 @@ function TabButton({
           : "border-[#d6dbe1] bg-[#fbfcfd] text-[#525c69] hover:bg-[#eef2f6]"
       }`}
     >
-      {label}
+      <span className="inline-flex items-center gap-2">
+        {accent ? (
+          <span
+            aria-hidden="true"
+            className={`text-[0.72rem] leading-none ${accentClass ?? "text-[#64748b]"}`}
+          >
+            {accent}
+          </span>
+        ) : null}
+        <span>{label}</span>
+      </span>
     </button>
   );
 }
@@ -1018,16 +1032,20 @@ export default function Home() {
                       <strong className="font-semibold text-[#171c24]">
                         finance
                       </strong>
-                      , les technologies Web3 et la finance décentralisée (DeFi),
-                      j&apos;aime développer des solutions à l&apos;intersection des{" "}
+                      , j&apos;aime travailler à l&apos;intersection de{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        mécanismes financiers
+                        l&apos;analyse quantitative
                       </strong>
-                      ,{" "}
+                      , de la{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        modélisation mathématique
+                        modélisation
                       </strong>{" "}
-                      et technologies avancées.
+                      et de{" "}
+                      <strong className="font-semibold text-[#171c24]">
+                        l&apos;intelligence artificielle
+                      </strong>
+                      , avec une attention particulière portée à la rigueur, à la
+                      lisibilité des résultats et à leur utilité pour la décision.
                     </p>
                     <p>
                       <strong className="font-semibold text-[#171c24]">
@@ -1069,16 +1087,20 @@ export default function Home() {
                       <strong className="font-semibold text-[#171c24]">
                         finance
                       </strong>
-                      , Web3 technologies, and decentralized finance (DeFi), I enjoy
-                      building solutions at the intersection of{" "}
+                      , I enjoy working at the intersection of{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        financial mechanisms
+                        quantitative analysis
                       </strong>
                       ,{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        mathematical modeling
+                        modeling
                       </strong>
-                      , and advanced technologies.
+                      , and{" "}
+                      <strong className="font-semibold text-[#171c24]">
+                        artificial intelligence
+                      </strong>
+                      , with a strong focus on rigor, interpretability, and
+                      decision-oriented outputs.
                     </p>
                     <p>
                       <strong className="font-semibold text-[#171c24]">
@@ -1155,6 +1177,8 @@ export default function Home() {
                 key={tab.key}
                 active={tab.key === activeProfileTab}
                 label={tab.label}
+                accent={tab.accent}
+                accentClass={tab.accentClass}
                 onClick={() => setActiveProfileTab(tab.key)}
               />
             ))}
@@ -1209,6 +1233,8 @@ export default function Home() {
                 key={tab.key}
                 active={tab.key === activeContactTab}
                 label={tab.label}
+                accent={tab.accent}
+                accentClass={tab.accentClass}
                 onClick={() => setActiveContactTab(tab.key)}
               />
             ))}
@@ -1220,3 +1246,4 @@ export default function Home() {
     </main>
   );
 }
+
