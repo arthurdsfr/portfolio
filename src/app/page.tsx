@@ -93,13 +93,13 @@ const skillGroups: SkillGroup[] = [
         "Machine Learning (random forest, SVM)",
         "Deep Learning (Transformers, CNN, RNN)",
         "Supervised and reinforcement learning",
-        "Time series",
+        "Time series (LSTM, GRU)",
       ],
       fr: [
         "Machine Learning (random forest, SVM)",
         "Deep Learning (Transformers, CNN, RNN)",
         "Apprentissage supervisé et par renforcement",
-        "Séries temporelles",
+        "Séries temporelles (LSTM, GRU)",
       ],
     },
     note: {
@@ -902,7 +902,7 @@ function ReferencesPanel({ locale }: { locale: Locale }) {
 
 function OtherPanel({ locale }: { locale: Locale }) {
   return (
-    <div className="grid gap-5 sm:grid-cols-2">
+    <div className="grid gap-5 lg:grid-cols-3">
       {otherInterests.map((item) => (
         <article
           key={item.title.en}
@@ -1038,7 +1038,7 @@ export default function Home() {
                       </strong>{" "}
                       afin de développer un profil complet pour une carrière en{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        finance de marché
+                        finance de marché et asset management
                       </strong>
                       , en combinant une expertise technique solide et une bonne compréhension des{" "}
                       <strong className="font-semibold text-[#171c24]">
@@ -1089,7 +1089,7 @@ export default function Home() {
                       </strong>{" "}
                       to develop a well-rounded profile for a career in{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        market finance
+                        market finance and asset management
                       </strong>
                       , combining strong technical skills with a solid understanding of{" "}
                       <strong className="font-semibold text-[#171c24]">
