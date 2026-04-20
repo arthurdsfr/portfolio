@@ -64,7 +64,7 @@ export function ExperienceDetailClient({
 
   return (
     <main className="min-h-screen bg-[#f3f5f7] text-[#171c24]">
-      <div className="mx-auto w-full max-w-[1400px] px-6 py-12 sm:px-10 lg:px-14">
+      <div className="mx-auto w-full max-w-[1520px] px-6 py-12 sm:px-10 lg:px-16">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <Link
             href="/#nutshell"
@@ -87,7 +87,7 @@ export function ExperienceDetailClient({
               />
             </div>
             <h1
-              className="text-[clamp(2.6rem,6vw,5rem)] leading-none text-[#171c24]"
+              className="text-[clamp(2.2rem,5vw,4.2rem)] leading-none text-[#171c24]"
               style={{
                 fontFamily:
                   '"Iowan Old Style", "Baskerville Old Face", Baskerville, "Times New Roman", serif',

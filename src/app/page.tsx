@@ -517,13 +517,13 @@ const uiLabels = {
 function Banner({ locale }: { locale: Locale }) {
   return (
     <section className="border-b border-[#2c3440] bg-[#12161c] text-[#f8fafc]">
-      <div className="mx-auto grid w-full max-w-[1400px] gap-10 px-6 py-14 sm:px-10 lg:grid-cols-[0.92fr_1.08fr] lg:px-14 lg:py-18">
+      <div className="mx-auto grid w-full max-w-[1520px] gap-8 px-6 py-12 sm:px-10 lg:grid-cols-[0.9fr_1.1fr] lg:px-16 lg:py-16">
         <div className="overflow-hidden">
           <p
             className="leading-none text-[#f8fafc]"
             style={{
               fontFamily: '"Iowan Old Style", "Baskerville Old Face", Baskerville, "Times New Roman", serif',
-              fontSize: "clamp(7rem, 19vw, 15rem)",
+              fontSize: "clamp(5.5rem, 15vw, 11.5rem)",
               letterSpacing: "0",
               transform: "translateX(-0.06em)",
             }}
@@ -537,6 +537,7 @@ function Banner({ locale }: { locale: Locale }) {
             style={{
               fontFamily: '"Iowan Old Style", "Baskerville Old Face", Baskerville, "Times New Roman", serif',
               letterSpacing: "0.18em",
+              fontSize: "clamp(1.65rem, 3.4vw, 3.8rem)",
             }}
           >
             ARTHUR DESFRANCAIS
@@ -564,7 +565,7 @@ function SectionTitle({
         {eyebrow}
       </p>
       <h2
-        className="mt-3 text-3xl leading-tight text-[#171c24] sm:text-4xl"
+        className="mt-3 text-2xl leading-tight text-[#171c24] sm:text-[2rem]"
         style={{
           fontFamily: '"Iowan Old Style", "Baskerville Old Face", Baskerville, "Times New Roman", serif',
           fontStyle: "italic",
@@ -815,7 +816,7 @@ function ProjectCard({
             {project.category[locale]}
           </p>
           <h3
-            className="mt-3 text-[1.75rem] leading-tight text-[#171c24]"
+            className="mt-3 text-[1.45rem] leading-tight text-[#171c24]"
             style={{
               fontFamily: '"Iowan Old Style", "Baskerville Old Face", Baskerville, "Times New Roman", serif',
               fontWeight: 600,
@@ -964,7 +965,7 @@ export default function Home() {
   return (
     <main className="bg-[#f3f5f7] text-[#171c24]">
       <Banner locale={locale} />
-      <div className="mx-auto flex w-full max-w-[1400px] flex-col px-6 pb-24 pt-0 sm:px-10 lg:px-14">
+      <div className="mx-auto flex w-full max-w-[1520px] flex-col px-6 pb-24 pt-0 sm:px-10 lg:px-16">
         <header className="sticky top-0 z-20 border-b border-[#d7dde5]/90 bg-[#f3f5f7]/95 py-5 backdrop-blur">
           <nav className="flex flex-wrap items-center gap-3 text-sm font-medium text-[#5f6b78] sm:justify-between">
             <p className="font-mono text-xs uppercase tracking-[0.24em] text-[#7b8490]">
@@ -995,7 +996,7 @@ export default function Home() {
               title={uiLabels[locale].aboutTitle}
             />
             <div className="mt-10 rounded-lg border border-[#d7dde5] bg-[#fbfcfd] p-8 shadow-[0_16px_50px_rgba(15,23,42,0.05)] sm:p-10">
-              <div className="space-y-8 text-lg leading-9 text-[#4b5563]">
+              <div className="space-y-7 text-[1.02rem] leading-8 text-[#4b5563]">
                 {locale === "fr" ? (
                   <>
                     <p>
@@ -1111,7 +1112,7 @@ export default function Home() {
                     {uiLabels[locale].profile}
                   </p>
                   <p
-                    className="mt-4 text-3xl leading-tight text-[#171c24]"
+                    className="mt-4 text-[2rem] leading-tight text-[#171c24]"
                     style={{
                       fontFamily:
                         '"Iowan Old Style", "Baskerville Old Face", Baskerville, "Times New Roman", serif',
