@@ -168,13 +168,19 @@ const skillGroups: SkillGroup[] = [
   },
   {
     title: {
-      en: "Collaboration",
-      fr: "Collaboration",
+      en: "Certifications",
+      fr: "Certifications",
     },
     accent: "bg-[#4b5563]",
     items: {
-      en: ["GitHub", "Agile"],
-      fr: ["GitHub", "Agile"],
+      en: [
+        "Bloomberg Market Concepts",
+        "Bloomberg Finance Fundamentals",
+      ],
+      fr: [
+        "Bloomberg Market Concepts",
+        "Bloomberg Finance Fundamentals",
+      ],
     },
   },
 ];
