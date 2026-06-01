@@ -1220,7 +1220,7 @@ export default function Home() {
             />
           </div>
 
-          <div className="mt-10 grid gap-5 xl:grid-cols-2">
+          <div className="mt-10 grid gap-5 xl:grid-cols-3">
             {otherProjects.map((project) => (
               <ProjectCard key={project.slug} project={project} locale={locale} />
             ))}

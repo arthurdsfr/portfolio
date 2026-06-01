@@ -125,21 +125,25 @@ export function ProjectDetailClient({ project }: { project: ProjectEntry }) {
                 {pageLabels[locale].gallery}
               </h2>
             </div>
-            <div className="mt-8 grid gap-6 lg:grid-cols-2">
+            <div className="mt-8 grid gap-6 lg:grid-cols-2 xl:grid-cols-3">
               {project.gallery.map((image) => (
-                <figure
+                <a
                   key={image.src}
-                  className="overflow-hidden rounded-lg border border-[#d7dde5] bg-white"
+                  href={image.src}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="group overflow-hidden rounded-lg border border-[#d7dde5] bg-white transition-transform hover:-translate-y-1 hover:shadow-[0_18px_56px_rgba(15,23,42,0.08)]"
+                  aria-label={image.alt[locale]}
                 >
                   <div className="relative aspect-[4/3] w-full bg-[#f8fafc]">
                     <Image
                       src={image.src}
                       alt={image.alt[locale]}
                       fill
-                      className="object-contain"
+                      className="object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     />
                   </div>
-                </figure>
+                </a>
               ))}
             </div>
           </section>

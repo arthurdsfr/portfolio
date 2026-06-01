@@ -248,14 +248,143 @@ export const projects: ProjectEntry[] = [
     ],
   },
   {
+    slug: "portfolio-strategy-comparison",
+    title: {
+      en: "Portfolio Strategy Comparison",
+      fr: "Comparaison de Strategies de Portefeuille",
+    },
+    category: {
+      en: "Financial Project",
+      fr: "Projet financier",
+    },
+    status: {
+      en: "Personal Project",
+      fr: "Projet personnel",
+    },
+    goal: {
+      en: "Compare Equal Weight, Markowitz and Equal Risk Contribution portfolio strategies through rolling backtests.",
+      fr: "Comparer les strategies Equal Weight, Markowitz et Equal Risk Contribution a travers des backtests glissants.",
+    },
+    summary: {
+      en: "A quantitative portfolio construction project comparing allocation methods with interactive analytics, risk metrics and allocation history.",
+      fr: "Un projet quantitatif de construction de portefeuille comparant plusieurs methodes d'allocation avec une analyse interactive, des metriques de risque et l'historique des poids.",
+    },
+    tags: [
+      "Python",
+      "Portfolio Optimization",
+      "Markowitz",
+      "Risk Parity",
+      "Backtesting",
+      "Streamlit",
+      "yfinance",
+    ],
+    teaserImage: {
+      src: "/projects/portfolio-strategy/equity-curve.png",
+      alt: {
+        en: "Portfolio strategy equity curve comparison",
+        fr: "Comparaison des courbes de performance des strategies de portefeuille",
+      },
+    },
+    gallery: [
+      {
+        src: "/projects/portfolio-strategy/dashboard-summary.png",
+        alt: {
+          en: "Streamlit dashboard with performance summary and equity curve",
+          fr: "Dashboard Streamlit avec synthese de performance et courbe de valeur",
+        },
+      },
+      {
+        src: "/projects/portfolio-strategy/equity-curve.png",
+        alt: {
+          en: "Portfolio equity curve comparison",
+          fr: "Comparaison des courbes de performance du portefeuille",
+        },
+      },
+      {
+        src: "/projects/portfolio-strategy/drawdown.png",
+        alt: {
+          en: "Portfolio drawdown chart",
+          fr: "Graphique de drawdown du portefeuille",
+        },
+      },
+      {
+        src: "/projects/portfolio-strategy/latest-weights.png",
+        alt: {
+          en: "Latest allocation weights by strategy",
+          fr: "Derniers poids d'allocation par strategie",
+        },
+      },
+      {
+        src: "/projects/portfolio-strategy/weight-history.png",
+        alt: {
+          en: "Equal Risk Contribution allocation history",
+          fr: "Historique des allocations Equal Risk Contribution",
+        },
+      },
+    ],
+    detailSections: [
+      {
+        key: "context",
+        label: { en: "Context", fr: "Contexte" },
+        value: { en: "Personal Project", fr: "Projet personnel" },
+      },
+      {
+        key: "mainGoal",
+        label: { en: "Main Goal", fr: "Objectif principal" },
+        value: {
+          en: "Goal: Compare portfolio allocation strategies under real market conditions using historical ETF data and rolling-window backtests.",
+          fr: "Objectif : comparer des strategies d'allocation de portefeuille dans des conditions de marche reelles a partir de donnees historiques d'ETF et de backtests glissants.",
+        },
+      },
+      {
+        key: "use",
+        label: { en: "Use", fr: "Usage" },
+        value: {
+          en: "Personal research project to understand trade-offs between return, diversification and risk management in portfolio construction.",
+          fr: "Projet de recherche personnel pour comprendre les compromis entre rendement, diversification et gestion du risque dans la construction de portefeuille.",
+        },
+      },
+      {
+        key: "keySkills",
+        label: { en: "Key skills", fr: "Competences cles" },
+        value: { en: "", fr: "" },
+        tags: [
+          "Python",
+          "Portfolio Optimization",
+          "Markowitz",
+          "Equal Risk Contribution",
+          "Backtesting",
+          "Risk Metrics",
+          "Streamlit",
+        ],
+      },
+      {
+        key: "description",
+        label: { en: "Description", fr: "Description" },
+        value: {
+          en: "Built a Python framework to compare three portfolio construction methods: Equal Weight, Markowitz mean-variance optimization and Equal Risk Contribution.\nThe project downloads historical market data with yfinance, computes daily returns, runs monthly rolling-window backtests and evaluates each strategy using annualized return, volatility, Sharpe ratio, maximum drawdown, Value at Risk and cumulative performance.\nI also implemented an interactive Streamlit dashboard to adjust the asset universe, date range, estimation window and risk-free rate, then compare equity curves, drawdowns, latest allocations and allocation history.",
+          fr: "Developpement d'un framework Python pour comparer trois methodes de construction de portefeuille : Equal Weight, optimisation moyenne-variance de Markowitz et Equal Risk Contribution.\nLe projet telecharge des donnees de marche historiques via yfinance, calcule les rendements quotidiens, execute des backtests mensuels en fenetre glissante et evalue chaque strategie avec le rendement annualise, la volatilite, le ratio de Sharpe, le drawdown maximal, la Value at Risk et la performance cumulee.\nJ'ai egalement implemente un dashboard Streamlit interactif permettant d'ajuster l'univers d'actifs, la periode, la fenetre d'estimation et le taux sans risque, puis de comparer les courbes de performance, les drawdowns, les allocations finales et l'historique des poids.",
+        },
+      },
+      {
+        key: "pipeline",
+        label: { en: "Pipeline", fr: "Pipeline" },
+        value: {
+          en: "Market Data Download -> Return Computation -> Rolling Backtest -> Portfolio Optimization -> Risk Metrics -> Interactive Streamlit Dashboard",
+          fr: "Telechargement des donnees de marche -> Calcul des rendements -> Backtest glissant -> Optimisation de portefeuille -> Metriques de risque -> Dashboard interactif Streamlit",
+        },
+      },
+    ],
+  },
+  {
     slug: "electricity-purchase-optimizer",
     title: {
       en: "Electricity Purchase Optimizer",
       fr: "Optimiseur d'Achat d'Électricité",
     },
     category: {
-      en: "Financial Project",
-      fr: "Projet financier",
+      en: "Other Project",
+      fr: "Autre projet",
     },
     status: {
       en: "Academic Project",
@@ -580,9 +709,25 @@ export const projects: ProjectEntry[] = [
   },
 ];
 
-export const financialProjects = projects.filter(
-  (project) => project.category.en === "Financial Project",
-);
+const financialProjectOrder = [
+  "portfolio-strategy-comparison",
+  "cryptocurrency-heat-classifier",
+  "defi-liquidation-risk-simulator",
+];
+
+function projectOrderIndex(project: ProjectEntry, order: string[]) {
+  const index = order.indexOf(project.slug);
+
+  return index === -1 ? order.length : index;
+}
+
+export const financialProjects = projects
+  .filter((project) => project.category.en === "Financial Project")
+  .sort(
+    (projectA, projectB) =>
+      projectOrderIndex(projectA, financialProjectOrder) -
+      projectOrderIndex(projectB, financialProjectOrder),
+  );
 
 export const otherProjects = projects.filter(
   (project) => project.category.en === "Other Project",
