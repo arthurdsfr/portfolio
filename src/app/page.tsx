@@ -25,6 +25,10 @@ type SkillGroup = {
 
 type EducationEntry = {
   institution: string;
+  logo: {
+    src: string;
+    alt: string;
+  };
   degree: Localized<string>;
   period: string;
   ranking: Localized<string>;
@@ -187,7 +191,31 @@ const skillGroups: SkillGroup[] = [
 
 const educationEntries: EducationEntry[] = [
   {
+    institution: "Université Paris 1 Panthéon-Sorbonne",
+    logo: {
+      src: "/logos/education/sorbonne.png",
+      alt: "Université Paris 1 Panthéon-Sorbonne logo",
+    },
+    degree: {
+      en: "Master 2 Banking and Finance",
+      fr: "M2 Banque Finance",
+    },
+    period: "2026 - 2028 (1 an de césure)",
+    ranking: {
+      en: "1st / 35th Banking & Finance category (Eduniversal 2026)",
+      fr: "1er / 35ème catégorie Banque-Finance (Eduniversal 2026)",
+    },
+    location: {
+      en: "Paris, France",
+      fr: "Paris, France",
+    },
+  },
+  {
     institution: "IMT Mines Ales",
+    logo: {
+      src: "/logos/education/imt-mines.png",
+      alt: "IMT Mines Ales logo",
+    },
     degree: {
       en: "General Engineering (AI & Data Science Specialization)",
       fr: "Ingénierie généraliste (spécialisation IA & Data Science)",
@@ -204,6 +232,10 @@ const educationEntries: EducationEntry[] = [
   },
   {
     institution: "La Prat's",
+    logo: {
+      src: "/logos/education/la-prats.png",
+      alt: "Lycee La Prat's logo",
+    },
     degree: {
       en: "Preparatory Classes for Grandes Ecoles (CPGE)",
       fr: "Classes préparatoires aux grandes écoles (CPGE)",
@@ -220,6 +252,10 @@ const educationEntries: EducationEntry[] = [
   },
   {
     institution: "Lycee Saint-Thomas d'Aquin",
+    logo: {
+      src: "/logos/education/saint-thomas.png",
+      alt: "Lycee Saint-Thomas d'Aquin logo",
+    },
     degree: {
       en: "High school diploma (Mathematics and Physics)",
       fr: "Baccalauréat (mathématiques et physique)",
@@ -681,7 +717,7 @@ function EducationPanel({ locale }: { locale: Locale }) {
 
   return (
     <div className="overflow-hidden rounded-lg border border-[#d7dde5] bg-[#fbfcfd]">
-      <div className="hidden grid-cols-[1.25fr_2.35fr_0.9fr_2.15fr_1fr] gap-4 border-b border-[#d7dde5] bg-[#f3f6f9] px-6 py-4 text-sm font-medium uppercase tracking-[0.12em] text-[#66707d] lg:grid">
+      <div className="hidden grid-cols-[1.45fr_2.2fr_0.9fr_2.05fr_1fr] gap-4 border-b border-[#d7dde5] bg-[#f3f6f9] px-6 py-4 text-sm font-medium uppercase tracking-[0.12em] text-[#66707d] lg:grid">
         {headers.map((header) => (
           <span key={header}>{header}</span>
         ))}
@@ -690,19 +726,30 @@ function EducationPanel({ locale }: { locale: Locale }) {
         {educationEntries.map((entry) => (
           <article
             key={entry.institution}
-            className="grid gap-4 border-b border-[#e6ebf1] px-6 py-6 last:border-b-0 lg:grid-cols-[1.25fr_2.35fr_0.9fr_2.15fr_1fr]"
+            className="grid gap-4 border-b border-[#e6ebf1] px-6 py-6 last:border-b-0 lg:grid-cols-[1.45fr_2.2fr_0.9fr_2.05fr_1fr]"
           >
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.12em] text-[#7b8490] lg:hidden">
                 {headers[0]}
               </p>
-              <p className="mt-1 text-xl font-semibold text-[#171c24]">
-                {entry.institution}
-              </p>
+              <div className="mt-1 flex items-center gap-4">
+                <div className="flex h-14 w-20 shrink-0 items-center justify-center overflow-hidden rounded-md border border-[#e6ebf1] bg-white px-2">
+                  <Image
+                    src={entry.logo.src}
+                    alt={entry.logo.alt}
+                    width={96}
+                    height={56}
+                    className="max-h-10 w-auto object-contain"
+                  />
+                </div>
+                <p className="text-xl font-semibold leading-tight text-[#171c24]">
+                  {entry.institution}
+                </p>
+              </div>
             </div>
             <div>
               <p className="text-xs font-medium uppercase tracking-[0.12em] text-[#7b8490] lg:hidden">
-                Degree
+                {headers[1]}
               </p>
               <p className="mt-1 text-base leading-7 text-[#4f5a66]">
                 {entry.degree[locale]}
@@ -1021,20 +1068,21 @@ export default function Home() {
                   <>
                     <p>
                       <strong className="font-semibold text-[#171c24]">
-                        Futur ingénieur diplômé
+                        Ingénieur diplômé de l&apos;IMT Mines Alès
                       </strong>{" "}
-                      de l&apos;IMT Mines Ales (juin 2026), spécialisé en{" "}
+                      , spécialisé en{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        IA et Data Science
+                        Intelligence Artificielle et Data Science
                       </strong>
-                      , avec de solides bases en{" "}
+                      . J&apos;ai été admis au{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        mathématiques, programmation et intelligence artificielle
+                        Master 2 Banque-Finance de l&apos;Université Paris 1 Panthéon-Sorbonne
                       </strong>
-                      .
+                      , dans la continuité de mon intérêt pour la finance de marché,
+                      l&apos;analyse quantitative et l&apos;asset management.
                     </p>
                     <p>
-                      Très intéressé par la{" "}
+                      Passionné par la{" "}
                       <strong className="font-semibold text-[#171c24]">
                         finance
                       </strong>
@@ -1044,30 +1092,29 @@ export default function Home() {
                       </strong>
                       , de la{" "}
                       <strong className="font-semibold text-[#171c24]">
+                        gestion des risques
+                      </strong>
+                      , de la{" "}
+                      <strong className="font-semibold text-[#171c24]">
                         modélisation
                       </strong>{" "}
                       et de{" "}
                       <strong className="font-semibold text-[#171c24]">
                         l&apos;intelligence artificielle
                       </strong>
-                      , avec une attention particulière portée à la rigueur, à la
-                      lisibilité des résultats et à leur utilité pour la décision.
+                      , avec une attention particulière portée à la rigueur, à
+                      l&apos;interprétabilité des résultats et à leur utilité pour la
+                      décision d&apos;investissement.
                     </p>
                     <p>
+                      Je suis actuellement à la recherche d&apos;un{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        Ambitieux et déterminé
-                      </strong>
-                      , je souhaite poursuivre un{" "}
-                      <strong className="font-semibold text-[#171c24]">
-                        MSc in Finance
+                        stage de césure à compter de janvier 2027
                       </strong>{" "}
-                      afin de développer un profil complet pour une carrière en{" "}
+                      afin de mettre à profit mes compétences quantitatives,
+                      analytiques et techniques au sein d&apos;une{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        finance de marché et asset management
-                      </strong>
-                      , en combinant une expertise technique solide et une bonne compréhension des{" "}
-                      <strong className="font-semibold text-[#171c24]">
-                        produits financiers et outils quantitatifs
+                        équipe d&apos;asset management
                       </strong>
                       .
                     </p>
@@ -1076,20 +1123,21 @@ export default function Home() {
                   <>
                     <p>
                       <strong className="font-semibold text-[#171c24]">
-                        Future graduate engineer
+                        Graduate engineer from IMT Mines Alès
                       </strong>{" "}
-                      from IMT Mines Ales (June 2026), specialized in{" "}
+                      , specialized in{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        AI and Data Science
+                        Artificial Intelligence and Data Science
                       </strong>
-                      , with a strong foundation in{" "}
+                      . I have been admitted to the{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        mathematics, programming, and artificial intelligence
+                        Master 2 Banking and Finance at Université Paris 1 Panthéon-Sorbonne
                       </strong>
-                      .
+                      , continuing my focus on market finance, quantitative
+                      analysis and asset management.
                     </p>
                     <p>
-                      Deeply interested in{" "}
+                      Passionate about{" "}
                       <strong className="font-semibold text-[#171c24]">
                         finance
                       </strong>
@@ -1099,30 +1147,28 @@ export default function Home() {
                       </strong>
                       ,{" "}
                       <strong className="font-semibold text-[#171c24]">
+                        risk management
+                      </strong>
+                      ,{" "}
+                      <strong className="font-semibold text-[#171c24]">
                         modeling
                       </strong>
                       , and{" "}
                       <strong className="font-semibold text-[#171c24]">
                         artificial intelligence
                       </strong>
-                      , with a strong focus on rigor, interpretability, and
-                      decision-oriented outputs.
+                      , with a strong focus on rigor, interpretability and
+                      decision-oriented outputs for investment processes.
                     </p>
                     <p>
+                      I am currently looking for a{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        Ambitious and driven
-                      </strong>
-                      , I aim to pursue an{" "}
-                      <strong className="font-semibold text-[#171c24]">
-                        MSc in Finance
+                        gap-year internship starting in January 2027
                       </strong>{" "}
-                      to develop a well-rounded profile for a career in{" "}
+                      where I can apply my quantitative, analytical and technical
+                      skills within an{" "}
                       <strong className="font-semibold text-[#171c24]">
-                        market finance and asset management
-                      </strong>
-                      , combining strong technical skills with a solid understanding of{" "}
-                      <strong className="font-semibold text-[#171c24]">
-                        financial products and quantitative tools
+                        asset management team
                       </strong>
                       .
                     </p>
