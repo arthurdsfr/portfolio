@@ -113,25 +113,23 @@ const skillGroups: SkillGroup[] = [
   },
   {
     title: {
-      en: "Data Analysis",
-      fr: "Analyse de données",
+      en: "Finance",
+      fr: "Finance",
     },
     accent: "bg-[#64748b]",
     items: {
       en: [
-        "Exploratory Data Analysis (EDA)",
-        "Statistical modeling and regression",
-        "Data visualization",
+        "Derivatives (options, futures, forwards, swaps)",
+        "Fixed income (bonds, yield curve, duration)",
+        "Credit risk analysis",
+        "Equity analysis (valuation, multiples, fundamentals)",
       ],
       fr: [
-        "Analyse exploratoire des données (EDA)",
-        "Modélisation statistique et régression",
-        "Visualisation de données",
+        "Produits dérivés (options, futures, forwards, swaps)",
+        "Produits de taux (obligations, courbe des taux, duration)",
+        "Analyse du risque de crédit",
+        "Analyse actions (valorisation, multiples, fondamentaux)",
       ],
-    },
-    note: {
-      en: "Libraries: yfinance, pandas, matplotlib, seaborn",
-      fr: "Bibliothèques : yfinance, pandas, matplotlib, seaborn",
     },
   },
   {
@@ -178,10 +176,12 @@ const skillGroups: SkillGroup[] = [
     accent: "bg-[#4b5563]",
     items: {
       en: [
+        "CFA Level I Candidate (November 2026)",
         "Bloomberg Market Concepts",
         "Bloomberg Finance Fundamentals",
       ],
       fr: [
+        "CFA Level I Candidate (novembre 2026)",
         "Bloomberg Market Concepts",
         "Bloomberg Finance Fundamentals",
       ],
@@ -519,6 +519,7 @@ const uiLabels = {
     contactTitle: "Let's get in touch",
     profileCardTitle: "Profile",
     profileRole: "General Engineer",
+    profileSubrole: "CFA Level I Candidate",
     keywords: ["AI & Data Science", "Market Finance", "Asset Management"],
     email: "Email",
     linkedin: "LinkedIn",
@@ -543,6 +544,7 @@ const uiLabels = {
     contactTitle: "Restons en contact",
     profileCardTitle: "Profil",
     profileRole: "Ingénieur généraliste",
+    profileSubrole: "CFA Level I Candidate",
     keywords: ["IA & Data Science", "Finance de marché", "Asset Management"],
     email: "Email",
     linkedin: "LinkedIn",
@@ -1199,6 +1201,9 @@ export default function Home() {
                   </p>
                   <p className="mt-4 text-sm uppercase tracking-[0.16em] text-[#64748b]">
                     {uiLabels[locale].profileRole}
+                  </p>
+                  <p className="mt-2 text-sm uppercase tracking-[0.12em] text-[#8b6f47]">
+                    {uiLabels[locale].profileSubrole}
                   </p>
                 </div>
                 <div className="space-y-4">
