@@ -1081,7 +1081,8 @@ export default function Home() {
                         Master 2 Banque-Finance de l&apos;Université Paris 1 Panthéon-Sorbonne
                       </strong>
                       , dans la continuité de mon intérêt pour la finance de marché,
-                      l&apos;analyse quantitative et l&apos;asset management.
+                      l&apos;analyse quantitative et l&apos;asset management. Je suis
+                      également <strong className="font-semibold text-[#171c24]">candidat au CFA Level I</strong>.
                     </p>
                     <p>
                       Passionné par la{" "}
@@ -1136,7 +1137,7 @@ export default function Home() {
                         Master 2 Banking and Finance at Université Paris 1 Panthéon-Sorbonne
                       </strong>
                       , continuing my focus on market finance, quantitative
-                      analysis and asset management.
+                      analysis and asset management. I am also a <strong className="font-semibold text-[#171c24]">CFA Level I Candidate</strong>.
                     </p>
                     <p>
                       Passionate about{" "}
