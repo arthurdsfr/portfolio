@@ -65,24 +65,43 @@ const navigation = {
 const skillGroups: SkillGroup[] = [
   {
     title: {
-      en: "Programming Languages",
-      fr: "Langages de programmation",
+      en: "Finance",
+      fr: "Finance",
     },
-    accent: "bg-[#6b7280]",
+    accent: "bg-[#64748b]",
     items: {
       en: [
-        "Python (Expert)",
-        "R (Advanced)",
-        "SQL / NoSQL (Advanced)",
-        "VBA (Intermediate)",
-        "Java (Intermediate)",
+        "Derivatives (options, futures, forwards, swaps)",
+        "Fixed income (bonds, yield curve, duration)",
+        "Risk analysis (VaR, CVaR, stress testing)",
+        "Equity analysis (valuation, multiples, fundamentals)",
       ],
       fr: [
-        "Python (Expert)",
-        "R (Avancé)",
-        "SQL / NoSQL (Avancé)",
-        "VBA (Intermédiaire)",
-        "Java (Intermédiaire)",
+        "Produits dérivés (options, futures, forwards, swaps)",
+        "Produits de taux (obligations, courbe des taux, duration)",
+        "Analyse des risques (VaR, CVaR, tests de résistance)",
+        "Analyse actions (valorisation, multiples, fondamentaux)",
+      ],
+    },
+  },
+  {
+    title: {
+      en: "Mathematics",
+      fr: "Mathématiques",
+    },
+    accent: "bg-[#7c8695]",
+    items: {
+      en: [
+        "Probabilities and statistics (frequentist and Bayesian statistics)",
+        "Linear algebra (PCA, covariance analysis)",
+        "Combinatorial optimisation (heuristic approaches)",
+        "Advanced mathematics for machine learning",
+      ],
+      fr: [
+        "Probabilités et statistiques (fréquentistes et bayésiennes)",
+        "Algèbre linéaire (PCA, analyse de covariance)",
+        "Optimisation combinatoire (approches heuristiques)",
+        "Mathématiques avancées pour le machine learning",
       ],
     },
   },
@@ -113,43 +132,24 @@ const skillGroups: SkillGroup[] = [
   },
   {
     title: {
-      en: "Finance",
-      fr: "Finance",
+      en: "Programming Languages",
+      fr: "Langages de programmation",
     },
-    accent: "bg-[#64748b]",
+    accent: "bg-[#6b7280]",
     items: {
       en: [
-        "Derivatives (options, futures, forwards, swaps)",
-        "Fixed income (bonds, yield curve, duration)",
-        "Credit risk analysis",
-        "Equity analysis (valuation, multiples, fundamentals)",
+        "Python (Expert)",
+        "R (Advanced)",
+        "SQL / NoSQL (Advanced)",
+        "VBA (Intermediate)",
+        "Java (Intermediate)",
       ],
       fr: [
-        "Produits dérivés (options, futures, forwards, swaps)",
-        "Produits de taux (obligations, courbe des taux, duration)",
-        "Analyse du risque de crédit",
-        "Analyse actions (valorisation, multiples, fondamentaux)",
-      ],
-    },
-  },
-  {
-    title: {
-      en: "Mathematics",
-      fr: "Mathématiques",
-    },
-    accent: "bg-[#7c8695]",
-    items: {
-      en: [
-        "Probabilities and statistics (frequentist and Bayesian statistics)",
-        "Linear algebra (PCA, covariance analysis)",
-        "Combinatorial optimisation (heuristic approaches)",
-        "Advanced mathematics for machine learning",
-      ],
-      fr: [
-        "Probabilités et statistiques (fréquentistes et bayésiennes)",
-        "Algèbre linéaire (PCA, analyse de covariance)",
-        "Optimisation combinatoire (approches heuristiques)",
-        "Mathématiques avancées pour le machine learning",
+        "Python (Expert)",
+        "R (Avancé)",
+        "SQL / NoSQL (Avancé)",
+        "VBA (Intermédiaire)",
+        "Java (Intermédiaire)",
       ],
     },
   },
